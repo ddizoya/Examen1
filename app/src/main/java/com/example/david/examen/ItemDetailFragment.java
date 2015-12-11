@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.david.examen.dummy.DummyContent;
@@ -57,12 +58,28 @@ public class ItemDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_item_detail, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_item_detail, container, false);
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.item_detail)).setText(mItem.details);
         }
+        // Creamos un objeto botón con la ID del botón del fragment, para así manejarlo.
+        Button bBorradoFragment = (Button)  rootView.findViewById(R.id.botonFragment);
+
+        // Le asociamos un listener para que, cada vez que se clickee, se borren todos los elementos que muestra el TextView del fragment.
+        bBorradoFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Ahora, el TextView borrará todo su contenido por "Borrado"
+                ((TextView) rootView.findViewById(R.id.item_detail)).setText("Borrado");
+
+                // Y se cierra la activity padre.
+                getActivity().finish();
+
+            }
+        });
 
         return rootView;
     }
