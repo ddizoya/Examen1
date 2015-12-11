@@ -34,6 +34,9 @@ public class ItemListActivity extends AppCompatActivity
      */
     private boolean mTwoPane;
 
+    //Creamos una constante de tipo int que valide el valor enviado por el startActivityForResult()
+    private static final int OK = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +95,10 @@ public class ItemListActivity extends AppCompatActivity
             // for the selected item ID.
             Intent detailIntent = new Intent(this, ItemDetailActivity.class);
             detailIntent.putExtra(ItemDetailFragment.ARG_ITEM_ID, id);
-            startActivity(detailIntent);
+
+
+            //Empleamos el método startActivityForResult(), y le pasamos el intent y la constante que creamos previamente como atributo (valor int 1)
+            startActivityForResult(detailIntent, OK);
         }
     }
 }
