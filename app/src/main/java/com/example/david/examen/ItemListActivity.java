@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.Toast;
 
 
 /**
@@ -101,4 +102,15 @@ public class ItemListActivity extends AppCompatActivity
             startActivityForResult(detailIntent, OK);
         }
     }
+
+    //Una vez abrimos el detalle de alguien, y le damos al botón de Borrar que hay allí, se cerrará la 2ª activity y saldrá la toast.
+    //Este método siempre retorna el dato cuando la activity a la que se llama se 'muere'. Es importante que se cierre.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == OK){
+            Toast.makeText(this, "Activity cerrada", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
 }
