@@ -56,7 +56,15 @@ public class ItemListActivity extends AppCompatActivity
             }
         });
 
-        if (findViewById(R.id.item_detail_container) != null) {
+     /*
+           Le decimos que, de forma obligatoria, si no es nulo y está apaisado, que cargue una sola activity con el fragment de listas
+           y sus detalles.
+           Si no es así, es decir, no es nulo pero no está apaisado, se verá en modo default, teniendo que depender de dos activities y dos fragments.
+           La condición booleana la puedes encontrar en res/values/condicion.xml.
+
+         */
+
+        if (findViewById(R.id.item_detail_container) != null && getResources().getBoolean(R.bool.apaisado) == true) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
             // res/values-sw600dp). If this view is present, then the
